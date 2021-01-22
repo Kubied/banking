@@ -4,9 +4,8 @@ if(isset($_REQUEST['submitBtn'])){
     include '_inc/dbconn.php';
     $username=$_REQUEST['uname'];
     
-    //salting of password
-    $salt="@g26jQsG&nh*&#8v";
-    $password= sha1($_REQUEST['pwd'].$salt);
+    
+    $password= $_REQUEST['pwd'];
   
     $sql="SELECT email,password FROM customer WHERE email='$username' AND password='$password'";
     $result=mysql_query($sql) or die(mysql_error());
