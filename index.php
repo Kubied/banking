@@ -8,8 +8,8 @@ if(isset($_REQUEST['submitBtn'])){
     $password= $_REQUEST['pwd'];
   
     $sql="SELECT email,password FROM customer WHERE email='$username' AND password='$password'";
-    $result=mysql_query($sql) or die(mysql_error());
-    $rws=  mysql_fetch_array($result);
+    $result=$mysql->query($sql) or die($mysql->error());
+    $rws=  $result->fetch_array();
     
     $user=$rws[0];
     $pwd=$rws[1];    
