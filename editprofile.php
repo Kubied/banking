@@ -2,8 +2,8 @@
 <?php
 include '_inc/dbconn.php';
 $sql="SELECT * FROM `admin` WHERE id=1";
-$result=  mysql_query($sql) or die(mysql_error());
-$rws=  mysql_fetch_array($result);
+$result=  $mysql->query($sql) or die($mysql->error());
+$rws=  $result->fetch_array();
 ?>
 <html>
     <head>
@@ -106,17 +106,9 @@ $rws=  mysql_fetch_array($result);
                     <td colspan="2"><input type="submit" name="alter" value="UPDATE DATA"/></td>
                 </tr>
             </table>
-        </form>
-                
-                
-                
+                </form>                
             </div>
-            <div class="footer">
-                
-                
-                
-                
-                
+            <div class="footer">               
             </div>
         </div>
     </body>
