@@ -137,19 +137,19 @@ class Account_Summary
 	}
 	public function showSummary()
 	{
-	    return '<p>Name: <?php echo $this->name;?></p>
-            <p>gender: <?php if($this->getGender()=="M") echo "Male"; else echo "Female";?></p>
-            <p>Mobile: <?php echo $this->mobile;?></p>
-            <p>Email: <?php echo $this->email;?></p>
+	    return '<p>Name: '.$this->name.'</p>
+            <p>gender: <?php if('.$this->getGender().'=="M") echo "Male"; else echo "Female";?></p>
+            <p>Mobile: '.$this->mobile.'</p>
+            <p>Email: '.$this->email.'</p>
             <br>
-            <p>Account No: <?php echo $this->acc_no;?></p>
-            <p>Branch: <?php echo $this->branch;?></p>
-            <p>Branch Code: <?php echo $this->branch_code;?></p>
-            <p>Last Login: <?php echo $this->last_login;?></p>
+            <p>Account No: '.$this->acc_no.'</p>
+            <p>Branch: '.$this->branch.'</p>
+            <p>Branch Code: '.$this->branch_code.'</p>
+            <p>Last Login: '.$this->last_login.'</p>
             <br>
-            <p>Account status: <?php echo $this->acc_status;?></p>
-            <p>Account Type: <?php echo $this->acc_type;?></p>
-            <p>Address: <?php echo $this->address;?></p>';
+            <p>Account status: '.$this->acc_status.'</p>
+            <p>Account Type: '.$this->acc_type.'</p>
+            <p>Address: '.$this->address.'</p>';
 }
 	public function showCustomerSummary()
 	{	   
@@ -357,15 +357,14 @@ class Staff extends Account_Summary
 	}
 	public function showStaff()
 	{
-	    return '<p><span class="heading">Name: </span><?php echo $this->name;?></p>
-            <p><span class="heading">Department: </span><?php echo $this->dept;?></p>
-            <p><span class="heading">Email: </span><?php echo $this->email;?></p>
+	    return '<p><span class="heading">Name: </span>'.$this->name.'</p>
+            <p><span class="heading">Department: </span>'.$this->dept.'</p>
+            <p><span class="heading">Email: </span>'.$this->email.'</p>
             </div>
-             <div class="content2">
-            <p><span class="heading">DOJ: </span><?php echo $this->doj;?></p>
-            <p><span class="heading">Last Login: </span><?php echo $this->last_login;?></p>';
+            <div class="content2">
+            <p><span class="heading">DOJ: </span>'.$this->doj.'</p>
+            <p><span class="heading">Last Login: </span>'.$this->last_login.'</p>';
 	}
-	
 }
 class Change_Password
 {
