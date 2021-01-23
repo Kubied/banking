@@ -33,7 +33,7 @@ if(!isset($_SESSION['customer_login']))
 include '_inc/dbconn.php';
 $sender_id=$_SESSION["login_id"];
 $sql="SELECT * FROM beneficiary1 WHERE sender_id='$sender_id'";
-$result=  mysql_query($sql) or die(mysql_error());
+$result=  $mysql->query($sql) or die($mysql->error());
 ?>
      <br><br><br>
         <h3 style="text-align:center;color:#2E4372;"><u>Added Beneficiary</u></h3>
@@ -46,7 +46,7 @@ $result=  mysql_query($sql) or die(mysql_error());
                         <th>status</th>
                         
                         <?php
-                        while($rws=  mysql_fetch_array($result)){
+                        while($rws=  $result->fetch_array()){
                             
                             echo "<tr><td><input type='radio' name='customer_id' value=".$rws[0];
                             echo ' checked';
