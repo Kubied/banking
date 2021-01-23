@@ -10,7 +10,7 @@ class Account_Summary
 	private $address;
 	private $acc_type;
 	private $gender;
-	private $mobile
+	private $mobile;
 	private $email;
 	private $branch_code;
 	private $balance;
