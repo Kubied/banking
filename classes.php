@@ -338,5 +338,40 @@ class Staff extends Account_Summary
 	
 	
 }
+class Change_Password
+{
+    private $old;
+	private $new;
+	private $again;
+	public function getAgain()
+	{
+		return $this->again;
+	}
+	public function setAgain($again)
+	{
+		$this->again = $again;
+	}
+	
+	public function getNew()
+	{
+		return $this->new;
+	}
+	public function setNew($new)
+	{
+		$this->new = $new;
+	}
+	
+	public function getOld()
+	{
+		return $this->old;
+	}
+	public function setOld($old)
+	{
+		$this->old = $old;
+	}
+	
+	
+	
+}
 
 ?>
