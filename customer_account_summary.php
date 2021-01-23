@@ -57,11 +57,13 @@ if(!isset($_SESSION['customer_login']))
                 while($rws=  $result->fetch_array())
                 {
                 $accsum->setBalance($rws[7]);
-                }            
-
-                echo $accsum->showCustomerSummary();
+                }                           
                 ?>
-           
+          <div class="customer_body">
+                <div class="content1">
+                        <?php echo $accsum->showCustomerSummary();?>
+                        </div>       
+           </div>
     
                <?php include 'footer.php';?>
             
