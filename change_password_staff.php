@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include '_inc/dbconn.php';
-        
+        include 'classes.php';
 if(!isset($_SESSION['staff_login'])) 
     header('location:staff_login.php');   
 ?>
@@ -49,16 +49,20 @@ if(!isset($_SESSION['staff_login']))
                 </table>
             </form>
             <?php
+        
+        $pass = new Change_Password();
             $user=$_SESSION['login_id'];
             if(isset($_REQUEST['change_password'])){
             $sql="SELECT * FROM staff WHERE email='$user'";
             $result=$mysql->query($sql);
             $rws=  $result->fetch_array();
-            $old=  $mysql->real_escape_string($_REQUEST['old_password']);
-            $new=  $mysql->real_escape_string($_REQUEST['new_password']);
-            $again=  $mysql->real_escape_string($_REQUEST['again_password']);
-            if($rws[9]==$old && $new==$again){
-                $sql1="UPDATE staff SET pwd='$new' WHERE email='$user'";
+                    
+            $pass->setOld($mysql->real_escape_string($_REQUEST['old_password']));
+            $pass->setNew($mysql->real_escape_string($_REQUEST['new_password']));
+            $pass->setAgain($mysql->real_escape_string($_REQUEST['again_password']));
+            
+             if($rws[9]==$pass->getOld() && $pass->getNew() == $pass->getAgain()){
+                $sql1="UPDATE staff SET pwd='".$pass->getNew()."' WHERE email='$user'";
                 $mysql->query($sql1) or die($mysql->error());
                 header('location:staff_homepage.php');
             }
