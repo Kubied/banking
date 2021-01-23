@@ -138,6 +138,16 @@ class Beneficiary extends Account_Summary
 	private $ifsc;
 	private $s1;
 	private $s2;
+	private $status;
+	
+	public function getStatus()
+	{
+		return $this->status;
+	}
+	public function setStatus($status)
+	{
+		$this->status = $status;
+	}
 	public function getS2()
 	{
 		return $this->s2;
