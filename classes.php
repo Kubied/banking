@@ -3,8 +3,8 @@
 class Account_Summary
 {
 	private $name;
-	private $acc_no;
-	private $branch;
+	protected $acc_no;
+	protected $branch;
 	private $last_login;
 	private $acc_status;
 	private $address;
