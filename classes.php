@@ -130,6 +130,68 @@ class Account_Summary
 }
 }
 
+class Beneficiary extends Account_Summary
+{
+        private $sender_id;
+	private $sender_name;
+	private $payee_name;
+	private $ifsc;
+	private $s1;
+	private $s2;
+	public function getS2()
+	{
+		return $this->s2;
+	}
+	public function setS2($s2)
+	{
+		$this->s2 = $s2;
+	}
+	
+	public function getS1()
+	{
+		return $this->s1;
+	}
+	public function setS1($s1)
+	{
+		$this->s1 = $s1;
+	}
+	
+	public function getIfsc()
+	{
+		return $this->ifsc;
+	}
+	public function setIfsc($ifsc)
+	{
+		$this->ifsc = $ifsc;
+	}
+	
+	public function getSenderid()
+	{
+		return $this->sender_id;
+	}
+	public function setSenderid($sender_id)
+	{
+		$this->sender_id = $sender_id;
+	}
+	public function getSendername()
+	{
+		return $this->sender_name;
+	}
+	public function setSendername($sender_name)
+	{
+		$this->sender_name = $sender_name;
+	}
+	public function getPayeename()
+	{
+		return $this->payee_name;
+	}
+	public function setPayeename($payee_name)
+	{
+		$this->payee_name = $payee_name;
+	}
 
+
+
+}
 
 ?>
