@@ -18,14 +18,14 @@ else
     
 
     $sql="SELECT * FROM cheque_book WHERE account_no='$account_no'";
-    $result=mysql_query($sql) or die(mysql_error());
-    $rws=mysql_fetch_array($result);
+    $result=$mysql->query($sql) or die($mysql->error());
+    $rws=$result->fetch_array();
     $c_status=$rws[3];
     $c_id=$rws[2];
     
     $sql="SELECT * FROM atm WHERE account_no='$account_no'";
-    $result=  mysql_query($sql) or die(mysql_error());
-    $rws=  mysql_fetch_array($result);
+    $result=  $mysql->query($sql) or die($mysql->error());
+    $rws=  $result->fetch_array();
     $a_status=$rws[3];
     $a_id=$rws[2];
     
@@ -38,18 +38,16 @@ else
   
 elseif($option=='ATM'){
 $sql="insert into atm values('','$name','$account_no','$atm_status')";
-mysql_query($sql) or die(mysql_error());
+$mysql->query($sql) or die($mysql->error());
 
 echo '<script>alert("Request succesfull. You will recieve confirmation from branch very soon.");';
 echo 'window.location= "customer_issue_atm.php";</script>';
 }
 else {
 $sql="insert into cheque_book values('','$name','$account_no','$cheque_book_status')";
-mysql_query($sql) or die(mysql_error());
+$mysql->query($sql) or die($mysql->error());
 
 echo '<script>alert("Request succesfull. You will recieve confirmation from branch very soon.");';
 echo 'window.location= "customer_issue_atm.php";</script>';
 }
-
-
 ?>
