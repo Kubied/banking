@@ -8,10 +8,10 @@ if(!isset($_SESSION['admin_login']))
 <?php
 include '_inc/dbconn.php';
 $sql="SELECT * FROM `staff`";
-$result=  mysql_query($sql) or die(mysql_error());
+$result=  $mysql->query($sql) or die($mysql->error());
 $sql_min="SELECT MIN(id) from staff";
-$result_min=  mysql_query($sql_min);
-$rws_min=  mysql_fetch_array($result_min);
+$result_min=  $mysql->query($sql_min);
+$rws_min=  $result_min->fetch_array();
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +51,7 @@ $rws_min=  mysql_fetch_array($result_min);
                         <th>mobile</th>
                         <th>email</th>
                         <?php
-                        while($rws=  mysql_fetch_array($result)){
+                        while($rws=  $result->fetch_array()){
                             echo "<tr><td><input type='radio' name='staff_id' value=".$rws[0];
                             if($rws[0]==$rws_min[0]) echo' checked';
                             echo " /></td>";
