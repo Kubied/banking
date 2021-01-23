@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include '_inc/dbconn.php';
-        
+       include 'classes.php';
 if(!isset($_SESSION['admin_login'])) 
     header('location:adminlogin.php');   
 ?>
@@ -41,15 +41,19 @@ if(!isset($_SESSION['admin_login']))
                 </div>
             </div>
             <?php
+        $pass = new Change_Password();
+        
             if(isset($_REQUEST['change_password'])){
             $sql="SELECT * FROM admin WHERE id='1'";
             $result=$mysql->query($sql);
             $rws=  $result->fetch_array();
-            $old=  $mysql->real_escape_string($_REQUEST['old_password']);
-            $new=  $mysql->real_escape_string($_REQUEST['new_password']);
-            $again=  $mysql->real_escape_string($_REQUEST['again_password']);
-            if($rws[9]==$old && $new==$again){
-                $sql1="UPDATE admin SET pwd='$new' WHERE id='1'";
+                    
+            $pass->setOld($mysql->real_escape_string($_REQUEST['old_password']));
+            $pass->setNew($mysql->real_escape_string($_REQUEST['new_password']));
+            $pass->setAgain($mysql->real_escape_string($_REQUEST['again_password']));
+                    
+            if($rws[9] == $pass->getOld() && $pass->getNew() == $pass->getAgain()){
+                $sql1="UPDATE admin SET pwd='".$pass->getNew()."' WHERE id='1'";
                 $mysql->query($sql1) or die($mysql->error());
                 header('location:admin_hompage.php');
             }
