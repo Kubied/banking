@@ -29,7 +29,7 @@ if(!isset($_SESSION['staff_login']))
     <?php
 include '_inc/dbconn.php';
 $sql="SELECT * FROM cheque_book WHERE cheque_book_status='PENDING'";
-$result=  mysql_query($sql) or die(mysql_error());
+$result=  $mysql->query($sql) or die($mysql->error());
 ?>
     <form action="staff_cheque_approve_process.php" method="POST">
 <table align="center">
@@ -40,7 +40,7 @@ $result=  mysql_query($sql) or die(mysql_error());
                         
                         
                         <?php
-                        while($rws=  mysql_fetch_array($result)){
+                        while($rws=  $result->fetch_array()){
                             echo "<tr><td><input type='radio' name='customer_id' value=".$rws[0];
                             echo ' checked';
                             echo " /></td>";
