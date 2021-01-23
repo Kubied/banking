@@ -11,7 +11,7 @@ if(isset($_REQUEST['submit_id']))
     
     include '_inc/dbconn.php';
     $sql="UPDATE beneficiary1 SET status='ACTIVE' WHERE id='$id'";
-    mysql_query($sql) or die(mysql_error());
+    $mysql->query($sql) or die($mysql->error());
     
    echo '<script>alert("Beneficiary status ACTIVE ");';
    echo 'window.location= "staff_beneficiary.php";</script>';
