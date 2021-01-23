@@ -19,8 +19,8 @@ $cust->setCredit($mysql->real_escape_string($_REQUEST['initial']));
 $cust->setAddress($mysql->real_escape_string($_REQUEST['customer_address']));
 $cust->setMobile($mysql->real_escape_string($_REQUEST['customer_mobile']));
 $cust->setEmail($mysql->real_escape_string($_REQUEST['customer_email']));
-$cust->setPassword(mysql_real_escape_string($_REQUEST['customer_pwd']));
-$cust->setBranch(mysql_real_escape_string($_REQUEST['branch']));
+$cust->setPassword($mysql->real_escape_string($_REQUEST['customer_pwd']));
+$cust->setBranch($mysql->real_escape_string($_REQUEST['branch']));
 $cust->setDate(date("Y-m-d"));
 
               switch($cust->getBranch()){
