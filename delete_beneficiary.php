@@ -10,7 +10,7 @@ if(isset($_REQUEST['submit_id']))
 include '_inc/dbconn.php';
 $customer_id=$_REQUEST["customer_id"];
 $sql="DELETE FROM beneficiary1 WHERE id='$customer_id'";
-$result=  mysql_query($sql) or die(mysql_error());
+$result=  $mysql->query($sql) or die($mysql->error());
 
 echo '<script>alert("Beneficiary Deleted successfully. ");';
                      echo 'window.location= "display_beneficiary.php";</script>';
