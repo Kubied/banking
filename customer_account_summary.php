@@ -61,7 +61,7 @@ if(!isset($_SESSION['customer_login']))
                 ?>
           <div class="customer_body">
                 <div class="content1">
-                        <?php $accsum->showCustomerSummary();?>
+                        <?php echo $accsum->showCustomerSummary();?>
                         </div>       
            </div>
     
