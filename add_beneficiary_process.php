@@ -16,16 +16,16 @@ if(!isset($_SESSION['customer_login']))
                 
                 include '_inc/dbconn.php';
                 $sql1="SELECT * FROM beneficiary1 WHERE sender_id='$sender_id' AND reciever_id='$acc_no'";
-                $result1=  mysql_query($sql1);
-                $rws1=  mysql_fetch_array($result1);
+                $result1=  $mysql->query($sql1);
+                $rws1=  $result1->fetch_array();
                 $s1=$rws1[1];
                 $s2=$rws1[3];
                 
                 
                 $sql="SELECT * FROM customer WHERE id='$acc_no'";
                 
-                $result=  mysql_query($sql) or die(mysql_error());
-                $rws=  mysql_fetch_array($result) ;
+                $result=  $mysql->query($sql) or die($mysql->error());
+                $rws=  $result->fetch_array();
                 
                 if($sender_id==$rws[0]) //can't send request to himself
                 {
@@ -48,9 +48,9 @@ if(!isset($_SESSION['customer_login']))
                 
                 else{
                      
-                    $status="PENDING";
+                $status="PENDING";
                 $sql="insert into beneficiary1 values('','$sender_id','$sender_name','$acc_no','$Payee_name','$status')";
-                mysql_query($sql) or die(mysql_error());
+                $mysql->query($sql) or die($mysql->error());
                 header("location:display_beneficiary.php");
                 }
                 
