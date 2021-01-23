@@ -7,23 +7,25 @@ if(!isset($_SESSION['staff_login']))
  <?php
                 $staff_id=$_SESSION['staff_id'];
                 include '_inc/dbconn.php';
+                include 'classes.php';
                 $sql="SELECT * FROM staff WHERE email='$staff_id'";
                 $result=  $mysql->query($sql) or die($mysql->error());
                 $rws=  $result->fetch_array();
+
+                $staff = new Staff();   
+                $staff->setId($rws[0]);
+                $staff->setName($rws[1]);
+                $staff->setDob($rws[2]);
+                $staff->setDept($rws[4]);
+                $staff->setDoj($rws[5]);
+                $staff->setMobile($rws[7]);
+                $staff->setEmail($rws[8]);
+                $staff->setGender($rws[10]);
+                $staff->setLastlogin($rws[11]);
                 
-                $id=$rws[0];
-                $name=$rws[1];
-                $dob=$rws[2];
-                $department=$rws[4];
-                $doj=$rws[5];
-                $mobile=$rws[7];
-                $email=$rws[8];
-                $gender=$rws[10];
-                $last_login=$rws[11];
-                
-                $_SESSION['login_id']=$email;
-                $_SESSION['name1']=$name;
-                $_SESSION['id']=$id;
+                $_SESSION['login_id']=$staff->getEmail();
+                $_SESSION['name1']=$staff->getName();
+                $_SESSION['id']=$staff->getId();
                 ?>
             
 <!DOCTYPE html>
@@ -44,20 +46,18 @@ if(!isset($_SESSION['staff_login']))
            
             <div class="customer_body">
              <div class="content1">
-                <p><span class="heading">Name: </span><?php echo $name;?></p>
-            <p><span class="heading">Department: </span><?php echo $department;?></p>
-            <p><span class="heading">Email: </span><?php echo $email;?></p>
-            </div>
-             <div class="content2">
-            <p><span class="heading">DOJ: </span><?php echo $doj;?></p>
-            <p><span class="heading">Last Login: </span><?php echo $last_login;?></p>
+                <?php
+        $staff->showStaff();
+        ?>
+                     
+                   
             </div>
             </div>
         </div>
     <?php include 'footer.php';?>
 <?php
-$date1=date('Y-m-d H:i:s');
-$_SESSION['staff_date']=$date1;
+$staff->setDate(date('Y-m-d H:i:s'));
+$_SESSION['staff_date']=$staff->getDate();
 ?>
             
                 
