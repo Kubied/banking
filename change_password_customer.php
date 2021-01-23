@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include '_inc/dbconn.php';
-        
+        include 'classes.php';
 if(!isset($_SESSION['customer_login'])) 
     header('location:index.php');   
 ?>
@@ -53,6 +53,8 @@ if(!isset($_SESSION['customer_login']))
                 </table>
             </form>
             <?php
+        $pass = new Change_Password();
+        
             $change=$_SESSION['login_id'];
             if(isset($_REQUEST['change_password'])){
             $sql="SELECT * FROM customer WHERE id='$change'";
@@ -60,12 +62,12 @@ if(!isset($_SESSION['customer_login']))
             $rws=  $result->fetch_array();
             
             
-            $old=  $_REQUEST['old_password'];
-            $new=  $_REQUEST['new_password'];
-            $again=$_REQUEST['again_password'];
+            $pass->setOld($_REQUEST['old_password']);
+            $pass->setNew($_REQUEST['new_password']);
+            $pass->setAgain($_REQUEST['again_password']);
             
-            if($rws[9]==$old && $new==$again){
-                $sql1="UPDATE customer SET password='$new' WHERE id='$change'";
+            if($rws[9]==$pass->getOld() && $pass->getNew()==$pass->getAgain()){
+                $sql1="UPDATE customer SET password='".$pass->getNew()."' WHERE id='$change'";
                 $mysql->query($sql1) or die($mysql->error());
                 header('location:customer_account_summary.php');
             }
