@@ -51,6 +51,7 @@ if(isset($_SESSION['customer_login']))
             <img src="header.jpg" height="100%" width="100%"/>
             </div>
             <div class="navbar">
+                <ul></ul>
             </div>
             
         <div class="user_login">
