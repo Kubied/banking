@@ -6,15 +6,15 @@ if(!isset($_SESSION['admin_login']))
 ?>
     <?php
 include '_inc/dbconn.php';
-$name=  mysql_real_escape_string($_REQUEST['customer_name']);
-$gender=  mysql_real_escape_string($_REQUEST['customer_gender']);
-$dob=  mysql_real_escape_string($_REQUEST['customer_dob']);
-$nominee=  mysql_real_escape_string($_REQUEST['customer_nominee']);
-$type=  mysql_real_escape_string($_REQUEST['customer_account']);
-$credit=  mysql_real_escape_string($_REQUEST['initial']);
-$address=  mysql_real_escape_string($_REQUEST['customer_address']);
-$mobile=  mysql_real_escape_string($_REQUEST['customer_mobile']);
-$email= mysql_real_escape_string($_REQUEST['customer_email']);
+$name=  $mysql->real_escape_string($_REQUEST['customer_name']);
+$gender=  $mysql->real_escape_string($_REQUEST['customer_gender']);
+$dob=  $mysql->escape_string($_REQUEST['customer_dob']);
+$nominee=  $mysql->real_escape_string($_REQUEST['customer_nominee']);
+$type=  $mysql->real_escape_string($_REQUEST['customer_account']);
+$credit=  $mysql->real_escape_string($_REQUEST['initial']);
+$address=  $mysql->real_escape_string($_REQUEST['customer_address']);
+$mobile=  $mysql->real_escape_string($_REQUEST['customer_mobile']);
+$email= $mysql->real_escape_string($_REQUEST['customer_email']);
 
 $password= mysql_real_escape_string($_REQUEST['customer_pwd']);
 
