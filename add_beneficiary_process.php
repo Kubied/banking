@@ -19,7 +19,7 @@ include 'classes.php';
                 
                 
                 include '_inc/dbconn.php';
-                $sql1="SELECT * FROM beneficiary1 WHERE sender_id='$sender_id' AND reciever_id='".$benef->getAccno()."'";
+                $sql1="SELECT * FROM beneficiary1 WHERE sender_id='".$benef->getSenderid()."' AND reciever_id='".$benef->getAccno()."'";
                 $result1=  $mysql->query($sql1);
                 $rws1=  $result1->fetch_array();
                 $benef->setS1($rws1[1]);
