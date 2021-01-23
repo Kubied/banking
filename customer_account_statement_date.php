@@ -43,13 +43,18 @@ if(!isset($_SESSION['customer_login']))
                         <th>Debit</th>
                         <th>Balance Amount</th>
                         
-                        <?php if(isset($_REQUEST['summary_date'])) {
-                         $date1=$_REQUEST['date1'];
-                         $date2=$_REQUEST['date2'];
-                         
+                        <?php
+         include 'classes.php';
+                
+        $acc_state = new Account_Statement();
+        if(isset($_REQUEST['summary_date'])) {
+                         $acc_state->setDate1($_REQUEST['date1']);
+                         $acc_state->setDate2($_REQUEST['date2']);
+                   
                          include '_inc/dbconn.php';
-                         $sender_id=$_SESSION["login_id"];
-                         $sql="SELECT * FROM passbook".$sender_id." WHERE transactiondate BETWEEN '$date1' AND '$date2'";
+                
+                         $acc_state->setSenderid($_SESSION["login_id"]);
+                         $sql="SELECT * FROM passbook".$acc_state->getSenderid()." WHERE transactiondate BETWEEN '".$acc_state->getDate1()."' AND '".$acc_state->getDate2()."'";
                          $result=  $mysql->query($sql) or die($mysql->error());
                         while($rws=  $result->fetch_array()){
                             
