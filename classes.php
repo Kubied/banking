@@ -230,6 +230,16 @@ class Customer extends Account_Summary
 	private $credit;
 	private $password;
 	private $date;
+	private $id;
+	
+	public function getId()
+	{
+		return $this->id;
+	}
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
 	public function getDate()
 	{
 		return $this->date;
