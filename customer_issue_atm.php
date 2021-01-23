@@ -46,14 +46,14 @@ if(!isset($_SESSION['customer_login']))
         $sender_id=$_SESSION["login_id"];
         
         $sql="SELECT * FROM cheque_book WHERE account_no='$sender_id'";
-        $result=mysql_query($sql) or die(mysql_error());
-        $rws=mysql_fetch_array($result);
+        $result=$mysql->query($sql) or die($mysql->error());
+        $rws=$result->fetch_array();
         $c_status=$rws[3];
         $c_id=$rws[2];
         
         $sql="SELECT * FROM atm WHERE account_no='$sender_id'";
-        $result=mysql_query($sql) or die(mysql_error());
-        $rws=mysql_fetch_array($result);
+        $result=$mysql->query($sql) or die($mysql->error());
+        $rws=$result->fetch_array();
         $atm_status=$rws[3];
         $a_id=$rws[2];
         
