@@ -8,8 +8,8 @@ if(!isset($_SESSION['staff_login']))
                 $staff_id=$_SESSION['staff_id'];
                 include '_inc/dbconn.php';
                 $sql="SELECT * FROM staff WHERE email='$staff_id'";
-                $result=  mysql_query($sql) or die(mysql_error());
-                $rws=  mysql_fetch_array($result);
+                $result=  $mysql->query($sql) or die($mysql->error());
+                $rws=  $result->fetch_array();
                 
                 $id=$rws[0];
                 $name=$rws[1];
