@@ -56,17 +56,17 @@ if(!isset($_SESSION['customer_login']))
             $change=$_SESSION['login_id'];
             if(isset($_REQUEST['change_password'])){
             $sql="SELECT * FROM customer WHERE id='$change'";
-            $result=mysql_query($sql);
-            $rws=  mysql_fetch_array($result);
+            $result=$mysql->query($sql);
+            $rws=  $result->fetch_array();
             
-            $salt="@g26jQsG&nh*&#8v";
-            $old=  sha1($_REQUEST['old_password'].$salt);
-            $new=  sha1($_REQUEST['new_password'].$salt);
-            $again=sha1($_REQUEST['again_password'].$salt);
+            
+            $old=  $_REQUEST['old_password'];
+            $new=  $_REQUEST['new_password'];
+            $again=$_REQUEST['again_password'];
             
             if($rws[9]==$old && $new==$again){
                 $sql1="UPDATE customer SET password='$new' WHERE id='$change'";
-                mysql_query($sql1) or die(mysql_error());
+                $mysql->query($sql1) or die($mysql->error());
                 header('location:customer_account_summary.php');
             }
             else{
