@@ -151,6 +151,22 @@ class Account_Summary
             <p>Account Type: <?php echo $this->acc_type;?></p>
             <p>Address: <?php echo $this->address;?></p>';
 }
+	public function showCustomerSummary()
+	{
+	   return '<div class="customer_body">
+                <div class="content1">
+            <p><span class="heading">Account No: </span><?php echo $this->acc_no;?></p>
+            <p><span class="heading">Branch: </span><?php echo $this->branch;?></p>
+            <p><span class="heading">Branch Code: </span><?php echo $this->branch_code;?></p>
+            </div>
+            
+            <div class="content2">
+            <p><span class="heading">Balance: INR </span><?php echo $this->balance;?></p>
+            <p><span class="heading">Account status: </span><?php echo $this->acc_status;?></p>
+            <p><span class="heading">Last Login: </span><?php echo $this->last_login;?></p>
+           </div>       
+        </div>';
+	}
 }
 
 class Beneficiary extends Account_Summary
