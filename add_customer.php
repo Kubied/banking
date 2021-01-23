@@ -16,24 +16,22 @@ $address=  mysql_real_escape_string($_REQUEST['customer_address']);
 $mobile=  mysql_real_escape_string($_REQUEST['customer_mobile']);
 $email= mysql_real_escape_string($_REQUEST['customer_email']);
 
-//salting of password
-$salt="@g26jQsG&nh*&#8v";
-$password=  sha1($_REQUEST['customer_pwd'].$salt);
+$password= mysql_real_escape_string($_REQUEST['customer_pwd']);
 
 $branch=  mysql_real_escape_string($_REQUEST['branch']);
 $date=date("Y-m-d");
 switch($branch){
-case 'KOLKATA': $ifsc="K421A";
+case 'Tomek': $ifsc="K421A";
     break;
-case 'DELHI': $ifsc="D30AC";
+case 'Romek': $ifsc="D30AC";
     break;
-case 'BANGALORE': $ifsc="B6A9E";
+case 'Atomek': $ifsc="B6A9E";
     break;
 }
 
 $sql3="SELECT MAX(id) from customer";
-$result=mysql_query($sql3) or die(mysql_error());
-$rws=  mysql_fetch_array($result);
+$result=$mysql->query($sql3) or die($mysql->error());
+$rws=  $result->fetch_array();
 $id=$rws[0]+1;
 $sql1="CREATE TABLE passbook".$id." 
     (transactionid int(5) AUTO_INCREMENT, transactiondate date, name VARCHAR(255), branch VARCHAR(255), ifsc VARCHAR(255), credit int(10), debit int(10), 
@@ -41,9 +39,9 @@ $sql1="CREATE TABLE passbook".$id."
 
 $sql="insert into customer values('','$name','$gender','$dob','$nominee','$type','$address','$mobile',
     '$email','$password','$branch','$ifsc','','ACTIVE')";
-mysql_query($sql) or die("Email already exists!");
-mysql_query($sql1) or die(mysql_error());
+$mysql->query($sql) or die("Email already exists!");
+$mysql->query($sql1) or die($mysql->error());
 $sql4="insert into passbook".$id." values('','$date','$name','$branch','$ifsc','$credit','0','$credit','Account Open')";
-mysql_query($sql4) or die(mysql_error());
+$mysql->query($sql4) or die($mysql->error());
 header('location:admin_hompage.php');
 ?>
