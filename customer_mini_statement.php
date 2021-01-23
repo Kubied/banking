@@ -32,7 +32,7 @@ if(!isset($_SESSION['customer_login']))
 <?php    include '_inc/dbconn.php';
 $sender_id=$_SESSION["login_id"];
 $sql="SELECT * FROM passbook".$sender_id." LIMIT 10";
-$result=  mysql_query($sql) or die(mysql_error()); ?>
+$result=  $mysql->query($sql) or die($mysql->error()); ?>
 
     <br><br><br>
     <h3 style="text-align:center;color:#2E4372;"><u>Last 10 Transaction</u></h3>
