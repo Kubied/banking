@@ -63,7 +63,7 @@ if(!isset($_SESSION['customer_login']))
                 ?>
             <div class="customer_body">
                 <div class="content1">
-            <p><span class="heading">Account No: </span><?php echo $this->acc_no;?></p>
+            <p><span class="heading">Account No: </span><?php echo $accsum->getAccno();?></p>
             <p><span class="heading">Branch: </span><?php echo $this->branch;?></p>
             <p><span class="heading">Branch Code: </span><?php echo $this->branch_code;?></p>
             </div>
