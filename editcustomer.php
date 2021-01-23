@@ -6,18 +6,18 @@ if(!isset($_SESSION['admin_login']))
 ?>
 <?php
 include '_inc/dbconn.php';
-$id=  mysql_real_escape_string($_REQUEST['customer_id']);
+$id=  $mysql->real_escape_string($_REQUEST['customer_id']);
 $sql="SELECT * FROM `customer` WHERE id=$id";
-$result=  mysql_query($sql) or die(mysql_error());
-$rws=  mysql_fetch_array($result);
+$result=  $mysql->query($sql) or die($mysql->error());
+$rws= $result->fetch_array();
 ?>
 <?php
-                        $delete_id=  mysql_real_escape_string($_REQUEST['customer_id']);
+                        $delete_id=  $mysql->real_escape_string($_REQUEST['customer_id']);
                         if(isset($_REQUEST['submit2_id'])){
                             $sql_delete="DELETE FROM `customer` WHERE `id` = '$delete_id'";
                             $sql_drop="DROP TABLE passbook".$delete_id;
-                            mysql_query($sql_delete) or die(mysql_error());
-                            mysql_query($sql_drop) or die(mysql_error());
+                            $mysql->query($sql_delete) or die($mysql->error());
+                            $mysql->query($sql_drop) or die($mysql->error());
                             header('location:delete_customer.php');
                         }
                         ?>
