@@ -11,13 +11,13 @@ if(isset($_REQUEST['submit_id']))
     $id=$_REQUEST['customer_id'];
     
     $sql="SELECT * FROM cheque_book WHERE id='$id'";
-    $result=  mysql_query($sql) or die(mysql_error());
-    $rws=  mysql_fetch_array($result);
+    $result=  $mysql->query($sql) or die($mysql->error());
+    $rws=  $result->fetch_array();
                 
     if($rws[3]=="PENDING")
     $sql="UPDATE cheque_book SET cheque_book_status='ISSUED' WHERE id='$id'";
     
-    mysql_query($sql) or die(mysql_error());
+    $mysql->query($sql) or die($mysql->error());
     
     echo '<script>alert("Cheque Book Issued");';
     echo 'window.location= "staff_cheque_approve.php";</script>';
