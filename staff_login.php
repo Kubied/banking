@@ -37,19 +37,22 @@ include 'header.php'; ?>
 <?php
 if(isset($_REQUEST['submitBtn'])){
     include '_inc/dbconn.php';
-    $username=$_REQUEST['uname'];
-    $password=$_REQUEST['pwd'];
+        include 'classes.php';
+        
+    $log = new Login();
+    $log->setUsername($_REQUEST['uname']);
+    $log->setPassword($_REQUEST['pwd']);
   
-    $sql="SELECT email,pwd FROM staff WHERE email='$username' AND pwd='$password'";
+    $sql="SELECT email,pwd FROM staff WHERE email='".$log->getUsername()."' AND pwd='".$log->getPassword()."'";
     $result=$mysql->query($sql) or die($mysql->error());
     $rws=  $result->fetch_array();
     
     
     
-    if($rws[0]==$username && $rws[1]==$password){
+    if($rws[0]==$log->getUsername() && $rws[1]==$log->getPassword()){
         session_start();
         $_SESSION['staff_login']=1;
-        $_SESSION['staff_id']=$username;
+        $_SESSION['staff_id']=$log->getUsername();
         
     header('location:staff_homepage.php'); 
     }
