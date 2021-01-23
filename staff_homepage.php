@@ -47,7 +47,7 @@ if(!isset($_SESSION['staff_login']))
             <div class="customer_body">
              <div class="content1">
                 <?php
-        $staff->showStaff();
+        echo $staff->showStaff();
         ?>
                      
                    
