@@ -152,17 +152,15 @@ class Account_Summary
             <p>Address: <?php echo $this->address;?></p>';
 }
 	public function showCustomerSummary()
-	{
-	   
-            return '<p><span class="heading">Account No: </span>  '.$this->acc_no.'</p>
+	{	   
+            return '<p><span class="heading">Account No: </span>'.$this->acc_no.'</p>
             <p><span class="heading">Branch: </span>'.$this->branch.'</p>
-            <p><span class="heading">Branch Code: </span><?php echo $this->branch_code;?></p>
-            </div>
-            
+            <p><span class="heading">Branch Code: </span>'.$this->branch_code.'</p>
+            </div>            
             <div class="content2">
-            <p><span class="heading">Balance: INR </span><?php echo $this->balance;?></p>
-            <p><span class="heading">Account status: </span><?php echo $this->acc_status;?></p>
-            <p><span class="heading">Last Login: </span><?php echo $this->last_login;?></p>';
+            <p><span class="heading">Balance: INR </span>'.$this->balance.'</p>
+            <p><span class="heading">Account status: </span>'.$this->acc_status.'</p>
+            <p><span class="heading">Last Login: </span>'.$this->last_login.'</p>';
 	}
 }
 
