@@ -31,7 +31,7 @@ if(!isset($_SESSION['staff_login']))
 <?php
 include '_inc/dbconn.php';
 $sql="SELECT * FROM beneficiary1 WHERE status='PENDING'";
-$result=  mysql_query($sql) or die(mysql_error());
+$result=  $mysql->query($sql) or die($mysql->error());
 ?>
            
            <form action="staff_approve_beneficiery.php" method="POST">
@@ -46,7 +46,7 @@ $result=  mysql_query($sql) or die(mysql_error());
                         
                         
                         <?php
-                        while($rws=  mysql_fetch_array($result)){
+                        while($rws=  $result->fetch_array()){
                             echo "<tr><td><input type='radio' name='customer_id' value=".$rws[0];
                             echo ' checked';
                             echo " /></td>";
@@ -69,8 +69,4 @@ $result=  mysql_query($sql) or die(mysql_error());
                </form>
             </div>
     <?php include 'footer.php'?>
-
-
-
-
                 
