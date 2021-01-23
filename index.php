@@ -6,22 +6,21 @@ if(isset($_REQUEST['submitBtn'])){
     
     $log = new Login();
     
-    $username=$_REQUEST['uname'];
-    $password=$_REQUEST['pwd'];
-   // $log->setUsername($_REQUEST['uname']);
-    //$log->setPassword($_REQUEST['pwd']);
+   
+   $log->setUsername($_REQUEST['uname']);
+   $log->setPassword($_REQUEST['pwd']);
   
-    $sql="SELECT email,password FROM customer WHERE email='$username' AND password='$password'";
+    $sql="SELECT email,password FROM customer WHERE email='".$log->getUsername()."' AND password='".$log->getPassword()."'";
     $result=$mysql->query($sql) or die($mysql->error());
     $rws=  $result->fetch_array();
     
     $user=$rws[0];
     $pwd=$rws[1];    
     
-    if($user==$username && $pwd==$password){
+    if($user==$log->getUsername() && $pwd==$log->getPassword()){
         session_start();
         $_SESSION['customer_login']=1;
-        $_SESSION['cust_id']=$username;
+        $_SESSION['cust_id']=$log->getUsername();
     header('location:customer_account_summary.php'); 
     }
    
