@@ -7,26 +7,29 @@ if(!isset($_SESSION['customer_login']))
 <?php
                 $cust_id=$_SESSION['cust_id'];
                 include '_inc/dbconn.php';
+                include 'classes.php';
+                $accsum = new Account_Summary();
+                
                 $sql="SELECT * FROM customer WHERE email='$cust_id'";
                 $result=  $mysql->query($sql) or die($mysql->error());
                 $rws=  $result->fetch_array();
                 
                 
-                $name= $rws[1];
-                $account_no= $rws[0];
-                $branch=$rws[10];
-                $branch_code= $rws[11];
-                $last_login= $rws[12];
-                $acc_status=$rws[13];
-                $address=$rws[6];
-                $acc_type=$rws[5];
+                $accsum->setName($rws[1]);
+                $accsum->setAccno($rws[0]);
+                $accsum->setBranch($rws[10]);
+                $accsum->setBranchcode($rws[11]);
+                $accsum->setLastlogin($rws[12]);
+                $accsum->setAccstatus($rws[13]);
+                $accsum->setAddress($rws[6]);
+                $accsum->setAcctype($rws[5]);
                 
-                $gender=$rws[2];
-                $mobile=$rws[7];
-                $email=$rws[8];
+                $accsum->setGender($rws[2]);
+                $accsum->setMobile($rws[7]);
+                $accsum->setEmail($rws[8]);
                 
-                $_SESSION['login_id']=$account_no;
-                $_SESSION['name']=$name;
+                $_SESSION['login_id']=$accsum->getAccno();
+                $_SESSION['name']=$accsum->getName();
                 ?>
 
 <!DOCTYPE html>
@@ -53,24 +56,12 @@ if(!isset($_SESSION['customer_login']))
                 $result=  $mysql->query($sql) or die($mysql->error());
                 while($rws=  $result->fetch_array())
                 {
-                $balance=$rws[7];
+                $accsum->setBalance($rws[7]);
                 }            
-?>
-            <div class="customer_body">
-                <div class="content1">
-            <p><span class="heading">Account No: </span><?php echo $account_no;?></p>
-            <p><span class="heading">Branch: </span><?php echo $branch;?></p>
-            <p><span class="heading">Branch Code: </span><?php echo $branch_code;?></p>
-            </div>
+
+                $accsum->showCustomerSummary();
+                ?>
             
-            <div class="content2">
-            <p><span class="heading">Balance: INR </span><?php echo $balance;?></p>
-            <p><span class="heading">Account status: </span><?php echo $acc_status;?></p>
-            <p><span class="heading">Last Login: </span><?php echo $last_login;?></p>
-           </div>
-            
-            
-        </div>
     
                <?php include 'footer.php';?>
             
