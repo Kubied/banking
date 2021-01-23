@@ -41,8 +41,8 @@ if(isset($_REQUEST['submitBtn'])){
     $password=$_REQUEST['pwd'];
   
     $sql="SELECT email,pwd FROM staff WHERE email='$username' AND pwd='$password'";
-    $result=mysql_query($sql) or die(mysql_error());
-    $rws=  mysql_fetch_array($result);
+    $result=$mysql->query($sql) or die($mysql->error());
+    $rws=  $result->fetch_array();
     
     
     
