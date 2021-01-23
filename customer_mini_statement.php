@@ -46,7 +46,7 @@ $result=  $mysql->query($sql) or die($mysql->error()); ?>
                         <th>Balance Amount</th>
                         
                         <?php
-                        while($rws=  mysql_fetch_array($result)){
+                        while($rws=  $result->fetch_array()){
                             
                             echo "<tr>";
                             echo "<td>".$rws[0]."</td>";
