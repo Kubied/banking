@@ -42,9 +42,9 @@ if(!isset($_SESSION['customer_login']))
             <tr><td><span class="heading">Account No: </span></td><td><input type='text' name='account_no' required></td></tr>
             <tr><td><span class="heading">Select Branch: </span></td><td><select name='branch_select' required>
                         
-                        <option value='KOLKATA'>Kolkata</option>
-                        <option value='DELHI'>Delhi</option>
-                        <option value='BANGALORE'>Bangalore</option>
+                        <option value='Tomek'>Tomek</option>
+                        <option value='Romek'>Romek</option>
+                        <option value='Atomek'>Atomek</option>
                         </select></td></tr>
             <tr><td><span class="heading">Ifsc Code: </span></td><td><input type='text' name='ifsc_code' required></td></tr> </table>
            <table align="center"> <tr><td><input type='submit' name='submitBtn' value='Add Beneficiary' class="addstaff_button">
