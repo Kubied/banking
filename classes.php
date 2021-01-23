@@ -373,5 +373,37 @@ class Change_Password
 	
 	
 }
-
+class Account_Statement
+{
+private $sender_id;
+	private $date1;
+	private $date2;
+	
+	public function getSenderid()
+	{
+		return $this->sender_id;
+	}
+	public function setSenderid($sender_id)
+	{
+		$this->sender_id = $sender_id;
+	}
+	public function getDate1()
+	{
+		return $this->date1;
+	}
+	public function setDate1($date1)
+	{
+		$this->date1 = $date1;
+	}
+	public function getDate2()
+	{
+		return $this->date2;
+	}
+	public function setDate2($date2)
+	{
+		$this->date2 = $date2;
+	}
+	
+	
+}
 ?>
