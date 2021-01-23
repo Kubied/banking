@@ -276,5 +276,39 @@ class Customer extends Account_Summary
 	
 	
 }
+class Staff extends Account_Summary
+{
+private $doj;
+	private $dept;
+	private $password;
+	
+	public function getPassword()
+	{
+		return $this->password;
+	}
+	public function setPassword($password)
+	{
+	    $this->password = $password;
+	}
+	public function getDoj()
+	{
+		return $this->doj;
+	}
+	public function setDoj($doj)
+	{
+		$this->doj = $doj;
+	}
+	
+	public function getDept()
+	{
+		return $this->dept;
+	}
+	public function setDept($dept)
+	{
+		$this->dept = $dept;
+	}
+	
+	
+}
 
 ?>
