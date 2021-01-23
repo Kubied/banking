@@ -138,7 +138,7 @@ class Account_Summary
 	public function showSummary()
 	{
 	    return '<p>Name: <?php echo $this->name;?></p>
-            <p>gender: <?php if($this->getGender()=='M') echo "Male"; else echo "Female";?></p>
+            <p>gender: <?php if($this->getGender()=="M") echo "Male"; else echo "Female";?></p>
             <p>Mobile: <?php echo $this->mobile;?></p>
             <p>Email: <?php echo $this->email;?></p>
             <br>
