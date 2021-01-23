@@ -43,14 +43,14 @@ if(!isset($_SESSION['admin_login']))
             <?php
             if(isset($_REQUEST['change_password'])){
             $sql="SELECT * FROM admin WHERE id='1'";
-            $result=mysql_query($sql);
-            $rws=  mysql_fetch_array($result);
-            $old=  mysql_real_escape_string($_REQUEST['old_password']);
-            $new=  mysql_real_escape_string($_REQUEST['new_password']);
-            $again=  mysql_real_escape_string($_REQUEST['again_password']);
+            $result=$mysql->query($sql);
+            $rws=  $result->fetch_array();
+            $old=  $mysql->real_escape_string($_REQUEST['old_password']);
+            $new=  $mysql->real_escape_string($_REQUEST['new_password']);
+            $again=  $mysql->real_escape_string($_REQUEST['again_password']);
             if($rws[9]==$old && $new==$again){
                 $sql1="UPDATE admin SET pwd='$new' WHERE id='1'";
-                mysql_query($sql1) or die(mysql_error());
+                $mysql->query($sql1) or die($mysql->error());
                 header('location:admin_hompage.php');
             }
             else{
