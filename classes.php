@@ -154,7 +154,7 @@ class Account_Summary
 	public function showCustomerSummary()
 	{
 	   
-            return '<p><span class="heading">Account No: </span> $this->acc_no;</p>
+            return '<p><span class="heading">Account No: </span> <?php $this->acc_no;?></p>
             <p><span class="heading">Branch: </span><?php $this->branch;?></p>
             <p><span class="heading">Branch Code: </span><?php echo $this->branch_code;?></p>
             </div>
