@@ -50,21 +50,9 @@ if(!isset($_SESSION['customer_login']))
                 $rws= $result->fetch_array();
                 
                 $acc_sum->setBalance($rws[6]);
-                                
+                
+                $acc_sum->showSummary();
 ?>
-            <p>Name: <?php echo $acc_sum->getName();?></p>
-            <p>gender: <?php if($acc_sum->getGender()=='M') echo "Male"; else echo "Female";?></p>
-            <p>Mobile: <?php echo $acc_sum->getMobile;?></p>
-            <p>Email: <?php echo $acc_sum->getEmail;?></p>
-            <br>
-            <p>Account No: <?php echo $acc_sum->getAccno();?></p>
-            <p>Branch: <?php echo $acc_sum->getBranch();?></p>
-            <p>Branch Code: <?php echo $acc_sum->getBranchcode();?></p>
-            <p>Last Login: <?php echo $acc_sum->getLastlogin();?></p>
-            <br>
-            <p>Account status: <?php echo $acc_sum->getAccstatus();?></p>
-            <p>Account Type: <?php echo $acc_sum->getAcctype();?></p>
-            <p>Address: <?php echo $acc_sum->getAddress();?></p>
             
         </div>
                <?php include 'footer.php';?>
