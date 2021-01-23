@@ -2,18 +2,18 @@
 
 class Account_Summary
 {
-	private $name;
+	protected $name;
 	protected $acc_no;
 	protected $branch;
-	private $last_login;
-	private $acc_status;
-	private $address;
-	private $acc_type;
-	private $gender;
-	private $mobile;
-	private $email;
-	private $branch_code;
-	private $balance;
+	protected $last_login;
+	protected $acc_status;
+	protected $address;
+	protected $acc_type;
+	protected $gender;
+	protected $mobile;
+	protected $email;
+	protected $branch_code;
+	protected $balance;
 	
 	public function getName()
 	{
@@ -199,9 +199,59 @@ class Beneficiary extends Account_Summary
 	{
 		$this->payee_name = $payee_name;
 	}
-
-
-
+}
+class Customer extends Account_Summary
+{
+	private $dob;
+	private $nominee;
+	private $credit;
+	private $password;
+	private $date;
+	public function getDate()
+	{
+		return $this->date;
+	}
+	public function setDate($date)
+	{
+		$this->date = $date;
+	}
+	public function getPassword()
+	{
+		return $this->password;
+	}
+	public function setPassword($password)
+	{
+		$this->password = $password;
+	}
+	
+	public function getCredit()
+	{
+		return $this->credit;
+	}
+	public function setCredit($credit)
+	{
+		$this->credit = $credit;
+	}
+	
+	public function getNominee()
+	{
+		return $this->nominee;
+	}
+	public function setNominee($nominee)
+	{
+		$this->nominee = $nominee;
+	}
+	public function getDob()
+	{
+		return $this->dob;
+	}
+	public function setDob($dob)
+	{
+		$this->dob = $dob;
+	}
+	
+	
+	
 }
 
 ?>
