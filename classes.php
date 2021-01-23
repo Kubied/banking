@@ -309,6 +309,15 @@ class Staff extends Account_Summary
 	private $password;
 	private $id;
 	private $dob;
+	private $date;
+	public function getDate()
+	{
+		return $this->date;
+	}
+	public function setDate($date)
+	{
+		$this->date = $date;
+	}
 	public function getDob()
 	{
 		return $this->dob;
@@ -351,7 +360,16 @@ class Staff extends Account_Summary
 	{
 		$this->dept = $dept;
 	}
-	
+	public function showStaff()
+	{
+	    return '<p><span class="heading">Name: </span><?php echo $this->name;?></p>
+            <p><span class="heading">Department: </span><?php echo $this->dept;?></p>
+            <p><span class="heading">Email: </span><?php echo $this->email;?></p>
+            </div>
+             <div class="content2">
+            <p><span class="heading">DOJ: </span><?php echo $this->doj;?></p>
+            <p><span class="heading">Last Login: </span><?php echo $this->last_login;?></p>';
+	}
 	
 }
 class Change_Password
