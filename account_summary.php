@@ -51,7 +51,7 @@ if(!isset($_SESSION['customer_login']))
                 
                 $acc_sum->setBalance($rws[6]);
                 
-                $acc_sum->showSummary();
+                echo $acc_sum->showSummary();
 ?>
             
         </div>
