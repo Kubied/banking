@@ -11,13 +11,13 @@ if(isset($_REQUEST['submit_id']))
     $id=$_REQUEST['customer_id'];
     
     $sql="SELECT * FROM atm WHERE id='$id'";
-    $result=  mysql_query($sql) or die(mysql_error());
-    $rws=  mysql_fetch_array($result);
+    $result=  $mysql->query($sql) or die($mysql->error());
+    $rws=  $result->fetch_array();
                 
     if($rws[3]=="PENDING")
     $sql="UPDATE atm SET atm_status='ISSUED' WHERE id='$id'";
     
-    mysql_query($sql) or die(mysql_error());
+    $mysql->query($sql) or die($mysql->error());
     
    echo '<script>alert("ATM Card Issued");';
    echo 'window.location= "staff_atm_approve.php";</script>';
