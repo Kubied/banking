@@ -59,7 +59,7 @@ if(!isset($_SESSION['customer_login']))
                 $accsum->setBalance($rws[7]);
                 }            
 
-                $accsum->showCustomerSummary();
+                echo $accsum->showCustomerSummary();
                 ?>
            
     
