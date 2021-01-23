@@ -288,10 +288,28 @@ class Customer extends Account_Summary
 }
 class Staff extends Account_Summary
 {
-private $doj;
+        private $doj;
 	private $dept;
 	private $password;
+	private $id;
+	private $dob;
+	public function getDob()
+	{
+		return $this->dob;
+	}
+	public function setDob($dob)
+	{
+		$this->dob = $dob;
+	}
 	
+	public function getId()
+	{
+		return $this->id;
+	}
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
 	public function getPassword()
 	{
 		return $this->password;
