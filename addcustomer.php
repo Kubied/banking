@@ -49,9 +49,9 @@ if(!isset($_SESSION['admin_login']))
                     </td>
                     <td>
                         <select name="branch">
-                            <option>KOLKATA</option>
-                            <option>DELHI</option>
-                            <option>BANGALORE</option>
+                            <option>Tomek</option>
+                            <option>Romek</option>
+                            <option>Atomek</option>
                             
                         </select>
                     </td>
