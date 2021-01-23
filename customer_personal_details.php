@@ -26,8 +26,8 @@ if(!isset($_SESSION['customer_login']))
                 $cust_id=$_SESSION['cust_id'];
                 include '_inc/dbconn.php';
                 $sql="SELECT * FROM customer WHERE email='$cust_id'";
-                $result=  mysql_query($sql) or die(mysql_error());
-                $rws=  mysql_fetch_array($result);
+                $result=  $mysql->query($sql) or die($mysql->error());
+                $rws=  $result->fetch_array();
                 
                 
                 $name= $rws[1];
