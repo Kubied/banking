@@ -242,6 +242,15 @@ class Customer extends Account_Summary
 	private $password;
 	private $date;
 	private $id;
+	private $name;
+	public function getName()
+	{
+		return $this->name;
+	}
+	public function setName($name)
+	{
+		$this->name = $name;
+	}
 	
 	public function getId()
 	{
