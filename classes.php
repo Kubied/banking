@@ -569,11 +569,31 @@ class Transaction
 }
 class Customer_Issue
 {
+	private $name;
         private $sender_id;
 	private $cheque_status;
 	private $cheque_id;
 	private $atm_status;
 	private $atm_id;
+	private $option;
+	
+	public function getOption()	
+	{
+		return $this->option;
+	}
+	public function setOption($option)
+	{
+		$this->option = $option;
+	}
+	
+	public function getName()	
+	{
+		return $this->name;
+	}
+	public function setName($name)
+	{
+		$this->name = $name;
+	}
 	public function getAtmid()	
 	{
 		return $this->atm_id;
