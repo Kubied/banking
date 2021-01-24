@@ -25,7 +25,7 @@ class Login
 
 class Account_Summary
 {
-	private $name;
+	protected $name;
 	protected $acc_no;
 	protected $branch;
 	protected $last_login;
@@ -117,7 +117,7 @@ class Account_Summary
 	}
 	public function setMobile($mobile)
 	{
-		$this->name = $mobile;
+		$this->mobile = $mobile;
 	}
 	public function getBranchcode()
 	{
@@ -138,7 +138,7 @@ class Account_Summary
 	public function showSummary()
 	{
 	    return '<p>Name: '.$this->name.'</p>
-            <p>gender: <?php if('.$this->getGender().'=="M") echo "Male"; else echo "Female";?></p>
+            <p>Gender: '.$this->gender.'</p>
             <p>Mobile: '.$this->mobile.'</p>
             <p>Email: '.$this->email.'</p>
             <br>
@@ -242,15 +242,6 @@ class Customer extends Account_Summary
 	private $password;
 	private $date;
 	private $id;
-	private $name;
-	public function getName()
-	{
-		return $this->name;
-	}
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
 	
 	public function getId()
 	{
@@ -306,7 +297,7 @@ class Customer extends Account_Summary
 	public function showDetails()
 	{
 	return '<p><span class="heading">Name: </span>'.$this->name.'</p>
-            <p><span class="heading">gender: </span><?php (('.$this->getGender().'=="M") ? "Male" : "Female");?></p>
+            <p><span class="heading">gender: </span>'.$this->gender.'</p>
             <p><span class="heading">Mobile: </span>'.$this->mobile.'</p>
             <p><span class="heading">Email: </span>'.$this->email.'</p>
             <p><span class="heading">Address: </span>'.$this->address.'</p>
