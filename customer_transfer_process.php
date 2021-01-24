@@ -19,7 +19,7 @@ $trans = new Transaction();
      $r_last_tid=$rws[0];
     
     //select the details in the last row of reciever's passbook.
-    $sql="SELECT * from passbook".$trans->getRecieverid." WHERE transactionid='$r_last_tid'";
+    $sql="SELECT * from passbook".$trans->getRecieverid()." WHERE transactionid='$r_last_tid'";
     $result=$mysql->query($sql) or die($mysql->error());
     while($rws= $result->fetch_array()){
     $trans->setAmount_r($rws[7]);
