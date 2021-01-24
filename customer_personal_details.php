@@ -25,46 +25,29 @@ if(!isset($_SESSION['customer_login']))
             <?php
                 $cust_id=$_SESSION['cust_id'];
                 include '_inc/dbconn.php';
+                include 'classes.php';
                 $sql="SELECT * FROM customer WHERE email='$cust_id'";
                 $result=  $mysql->query($sql) or die($mysql->error());
                 $rws=  $result->fetch_array();
                 
-                
-                $name= $rws[1];
-                $account_no= $rws[0];
-                $dob=$rws[3];
-                $nominee=$rws[4];
-                $branch=$rws[10];
-                $branch_code= $rws[11];
-                
-                $gender=$rws[2];
-                $mobile=$rws[7];
-                $email=$rws[8];
-                $address=$rws[6];
-                
-                $last_login= $rws[12];
-                
-                $acc_status=$rws[13];
-                $acc_type=$rws[5];
-                
-                
-                
-                                
-?>          <div class="customer_body">
+                $detail = new Customer();              
+                $detail->setName($rws[1]);              
+                $detail->setAccno($rws[0]);
+                $detail->setDob($rws[3]);
+                $detail->setNominee($rws[4]);
+                $detail->setBranch($rws[10]);
+                $detail->setBranchcode($rws[11]);     
+                $detail->setGender($rws[2]);
+                $detail->setMobile($rws[7]);
+                $detail->setEmail($rws[8]);
+                $detail->setAddress($rws[6]);   
+                $detail->setLastlogin($rws[12]);
+                $detail->setAccstatus($rws[13]);
+                $detail->setAcctype($rws[5]);                                                                           
+               ?>          
+                <div class="customer_body">
             <div class="content3">
-            <p><span class="heading">Name: </span><?php echo $name;?></p>
-            <p><span class="heading">gender: </span><?php if($gender=='M') echo "Male"; else echo "Female";?></p>
-            <p><span class="heading">Mobile: </span><?php echo $mobile;?></p>
-            <p><span class="heading">Email: </span><?php echo $email;?></p>
-            <p><span class="heading">Address: </span><?php echo $address;?></p>
-            </div>
-            <div class="content4">
-            <p><span class="heading">Account No: </span><?php echo $account_no;?></p>
-            <p><span class="heading">Nominee: </span><?php echo $nominee;?></p>
-            <p><span class="heading">Branch: </span><?php echo $branch;?></p>
-            <p><span class="heading">Branch Code: </span><?php echo $branch_code;?></p>
-            
-            <p><span class="heading">Account Type: </span><?php echo $acc_type;?></p>
+            <?php echo $detail->showDetails();?>
             </div>
             </div>
         </div>
