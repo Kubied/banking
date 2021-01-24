@@ -43,27 +43,27 @@ if(!isset($_SESSION['customer_login']))
     
     <?php 
         include '_inc/dbconn.php';
-        $sender_id=$_SESSION["login_id"];
+        include 'classes.php';
         
-        $sql="SELECT * FROM cheque_book WHERE account_no='$sender_id'";
+        $issue = new Customer_Issue();
+        
+        $issue->setSenderid($_SESSION["login_id"]);
+        
+        $sql="SELECT * FROM cheque_book WHERE account_no='".$issue->getSenderid()."'";
         $result=$mysql->query($sql) or die($mysql->error());
         $rws=$result->fetch_array();
-        $c_status=$rws[3];
-        $c_id=$rws[2];
+        $issue->setChequestatus($rws[3]);
+        $issue->setChequeid($rws[2]);
         
-        $sql="SELECT * FROM atm WHERE account_no='$sender_id'";
+        $sql="SELECT * FROM atm WHERE account_no='".$issue->getSenderid()."'";
         $result=$mysql->query($sql) or die($mysql->error());
         $rws=$result->fetch_array();
-        $atm_status=$rws[3];
-        $a_id=$rws[2];
+        $issue->setAtmstatus($rws[3]);  
+        $issue->setAtmid($rws[2]);
         
-        if(($a_id==$sender_id) || ($c_id==$sender_id))
+        if(($issue->getAtmid() == $issue->getSenderid()) || ($issue->getChequeid() == $issue->getSenderid()))
         {
-            
-        echo "<table align='center'>";
-        echo "<th>Requests</th><th>Status</th>";
-        echo "<tr><td>ATM Card Status: </td><td>$atm_status</td></tr>";
-        echo "<tr><td>Cheque Book Status: </td><td>$c_status</td></tr>";
-            echo "</table>"; }?>
-
+            echo $issue->showIssues();
+         }
+        ?>
     <?php include 'footer.php';?>
