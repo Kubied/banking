@@ -567,4 +567,55 @@ class Transaction
 		$this->sender_id = $sender_id;
 	}
 }
+class Customer_Issue
+{
+        private $sender_id;
+	private $cheque_status;
+	private $cheque_id;
+	private $atm_status;
+	private $atm_id;
+	public function getAtmid()	
+	{
+		return $this->atm_id;
+	}
+	public function setAtmid($atm_id)
+	{
+		$this->atm_id = $atm_id;
+	}
+	public function getAtmstatus()	
+	{
+		return $this->atm_status;
+	}
+	public function setAtmstatus($atm_status)
+	{
+		$this->atm_status = $atm_status;
+	}
+	public function getChequeid()	
+	{
+		return $this->cheque_id;
+	}
+	public function setChequeid($cheque_id)
+	{
+		$this->cheque_id = $cheque_id;
+	}
+	
+	public function getChequestatus()	
+	{
+		return $this->cheque_status;
+	}
+	public function setChequestatus($cheque_status)
+	{
+		$this->cheque_status = $cheque_status;
+	}
+	public function getSenderid()	
+	{
+		return $this->sender_id;
+	}
+	public function setSenderid($sender_id)
+	{
+		$this->sender_id = $sender_id;
+	}
+	
+
+}
 ?>
