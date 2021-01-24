@@ -25,7 +25,7 @@ class Login
 
 class Account_Summary
 {
-	protected $name;
+	private $name;
 	protected $acc_no;
 	protected $branch;
 	protected $last_login;
@@ -306,7 +306,7 @@ class Customer extends Account_Summary
 	public function showDetails()
 	{
 	return '<p><span class="heading">Name: </span>'.$this->name.'</p>
-            <p><span class="heading">gender: </span><?php if('.$this->getGender().'=="M") echo "Male"; else echo "Female";?></p>
+            <p><span class="heading">gender: </span><?php (('.$this->getGender().'=="M") ? "Male" : "Female");?></p>
             <p><span class="heading">Mobile: </span>'.$this->mobile.'</p>
             <p><span class="heading">Email: </span>'.$this->email.'</p>
             <p><span class="heading">Address: </span>'.$this->address.'</p>
