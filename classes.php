@@ -403,7 +403,7 @@ class Change_Password
 }
 class Account_Statement
 {
-private $sender_id;
+        private $sender_id;
 	private $date1;
 	private $date2;
 	
@@ -430,8 +430,128 @@ private $sender_id;
 	public function setDate2($date2)
 	{
 		$this->date2 = $date2;
+	}		
+}
+class Transaction
+{
+        private $sender_id;
+	private $amount_t;
+	private $reciever_id;
+	private $date;
+	
+	private $name_r;
+	private $branch_r;
+	private $ifsc_r;
+	private $amount_r;
+	
+	private $name_s;
+	private $branch_s;
+	private $ifsc_s;
+	private $amount_s;
+	public function getDate()
+	{
+		return $this->date;
+	}
+	public function setDate($date)
+	{
+		$this->date = $date;
+	}
+	public function getIfsc_s()
+	{
+		return $this->ifsc_s;
+	}
+	public function setIfsc_s($ifsc_s)
+	{
+		$this->ifsc_s = $ifsc_s;
+	}
+	
+	public function getBranch_s()
+	{
+		return $this->branch_s;
+	}
+	public function setBranch_s($branch_s)
+	{
+		$this->branch_s = $branch_s;
+	}
+	
+	public function getName_s()
+	{
+		return $this->name_s;
+	}
+	public function setName_s($name_s)
+	{
+		$this->name_s = $name_s;
+	}
+	
+	public function getAmount_s()
+	{
+		return $this->amount_s;
+	}
+	public function setAmount_s($amount_s)
+	{
+		$this->amount_s = $amount_s;
+	}
+	
+	public function getIfsc_r()
+	{
+		return $this->ifsc_r;
+	}
+	public function setIfsc_r($ifsc_r)
+	{
+		$this->ifsc_r = $ifsc_r;
+	}
+	
+	public function getBranch_r()
+	{
+		return $this->branch_r;
+	}
+	public function setBranch_r($branch_r)
+	{
+		$this->branch_r = $branch_r;
+	}
+	
+	public function getName_r()
+	{
+		return $this->name_r;
+	}
+	public function setName_r($name_r)
+	{
+		$this->name_r = $name_r;
+	}
+	
+	public function getAmount_r()
+	{
+		return $this->amount_r;
+	}
+	public function setAmount_r($amount_r)
+	{
+		$this->amount_r = $amount_r;
 	}
 	
 	
+	public function getRecieverid()
+	{
+		return $this->reciever_id;
+	}
+	public function setRecieverid($reciever_id)
+	{
+		$this->reciever_id = $reciever_id;
+	}
+	public function getAmount_t()
+	{
+		return $this->amount_t;
+	}
+	public function setAmount_t($amount_t)
+	{
+		$this->amount_t = $amount_t;
+	}
+	public function getSenderid()
+	{
+		return $this->sender_id;
+	}
+	public function setSenderid($sender_id)
+	{
+		$this->sender_id = $sender_id;
+	}
 }
 ?>
