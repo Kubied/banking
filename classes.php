@@ -616,6 +616,13 @@ class Customer_Issue
 		$this->sender_id = $sender_id;
 	}
 	
-
+       public function showIssues()
+       {
+          return '<table align="center">
+                  <th>Requests</th><th>Status</th>
+                  <tr><td>ATM Card Status: </td><td>'.$this->atm_status.'</td></tr>
+                  <tr><td>Cheque Book Status: </td><td>'.$this->cheque_status.'</td></tr>
+                  </table>';
+       }
 }
 ?>
