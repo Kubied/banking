@@ -294,8 +294,21 @@ class Customer extends Account_Summary
 		$this->dob = $dob;
 	}
 	
-	
-	
+	public function showDetails()
+	{
+	return '<p><span class="heading">Name: </span>'.$this->name.'</p>
+            <p><span class="heading">gender: </span><?php if('.$this->getGender().'=="M") echo "Male"; else echo "Female";?></p>
+            <p><span class="heading">Mobile: </span>'.$this->mobile.'</p>
+            <p><span class="heading">Email: </span>'.$this->email.'</p>
+            <p><span class="heading">Address: </span>'.$this->address.'</p>
+            </div>
+            <div class="content4">
+            <p><span class="heading">Account No: </span>'.$this->acc_no.'</p>
+            <p><span class="heading">Nominee: </span>'.$this->nominee.'</p>
+            <p><span class="heading">Branch: </span>'.$this->branch.'</p>
+            <p><span class="heading">Branch Code: </span>'.$this->branch_code.'</p>        
+            <p><span class="heading">Account Type: </span>'.$this->acc_type.'</p>';
+	}	
 }
 class Staff extends Account_Summary
 {
